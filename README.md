@@ -1,4 +1,4 @@
-# APP-Signal
+# Projet APP 2022-2023
 
 Le projet d'APP (Apprentissage Par Projet) effectué tout au long de la première année du cycle d'ingénieur à l'ISEP est effectué par groupe. Il s'agit de s'appuyer sur une idée de startup (inventé par le groupe) afin de mettre du contexte au travail effectué.
 
