@@ -1,29 +1,3 @@
-%% Remarques du tuteur avant correction
-%{
----------------------------------------------------------------------------
-G9A
-- Le code fonctionne
-- Structure du code a ameliorer (parametres utilisateurs a placer en amont)
-- Aucun commentaire !!
-- Usage du calcul matriciel 
-- Vecteur temps bien defini
-- Calcul puissances instantanee a revoir (difficile a comprendre !!)
-- Formule du seuil de la puissance instantanee non ecrit !!
-- Determination des plages de bruit a revoir (mais presque bonne)
-- Duree de chaque plage de bruit non calculee
-- Tension RMS de chaque plage de bruit calculee (mais formule puissance
-moyenne a revoir)
-- Calcul de la Puissance moyenne de chaque plage difficile a comprendre
-- Autocorrelation bien programmee, mais maximum d'autocorrelation et delai associe non
-programmes
-- Methode testee sur 3/4 fichiers, boucle a utiliser pour simplifier
-- Parametres a identifier et placer en amont du code
-- Figures de resultats claires
----------------------------------------------------------------------------
-%}
-
-
-%% PROGRAMME MODIFIE
 close all
 
 % <Choix du fichier
@@ -163,28 +137,5 @@ function analyse=ANALYSE(audio)
     legend("audio d'origine","approximation des bruits et silences")
 end
 
-%% Remarques du tuteur avant correction
-%%% Les figures sont claires, c'est appreciable !
-%%% Jardin 2 : 7 plages attendues
-%%% Jardin 1 & Marteau Piqueur ok
-%%% Formules utilisees difficiles a comprendre !!!!!!!!!
-%%% Difference entre les figures et les calculs !! Par exemple pour jardin
-%%% 1, il n'y a qu'un seul calcul attendu !!
-
-%% Liste non exhaustive des modifications apportees par G9A apres revision
-% - Ajout d'une sélection de fichier a traiter (l.29)
-% - Utilisation des bons fichiers audio
-% - Ajout de description pour ANALYSE (l.52)
-% - Clarification de certaines variables avec commentaires
-% - Ajout du calcul du seuil a partir des parametres de l'enonce 
-%   (l.56 & 62)
-% - Retrait de parties du code redondantes et inutiles
-% - Calcul plus simple de la duree (l.79)
-% - Calcul de la puissance instantanee plutot que puissance moyenne (l.88)
-% - Calcul du coef d'autocorrelation pour remplacer la fonction xcorr
-%   (l.134)
-% - Clarification de l'affichage des resultats, ajout de la duree du bruit
-%   (l.136)
-% - Simplification de y3 par calcul matriciel (l.164)
 %--------------------------------------------------------------------------
 % Probleme non corrige : une plage de trop pour Jardin02, sais pas pourquoi

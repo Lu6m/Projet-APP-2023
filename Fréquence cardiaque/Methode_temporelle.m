@@ -13,14 +13,14 @@ ECG("109.wav")
 
 
 function ecg=ECG(audio)
-%% -----------Récupération du Signal-------------%%
+%% -----------Récupération du Signal-------------
     [x,Fe]=audioread(audio);
     Te=1/Fe;
     [n,Pistes]=size(x);
     t=[(0:n-1)*Te];
     
 
-%% ----------Stéréo en mono----------------------%%
+%% ----------Stéréo en mono----------------------
 
 % Si l'audio est en stéréo, alors on fait une moyenne des deux pistes pour 
 % n'en obtenir plus qu'une :
@@ -28,7 +28,7 @@ function ecg=ECG(audio)
         y=mean(y,2);
     end
 
-%% ----------Récupération Signal Découpé---------------%%
+%% ----------Récupération Signal Découpé---------------
     Seuil=0.2;
     y=[];
     ty=[];
@@ -41,7 +41,7 @@ function ecg=ECG(audio)
         end
     end
 
-%% ----------------------Tracés------------------------%%
+%% ----------------------Tracés------------------------
     figure()
     subplot(2,1,1)
     plot(t,x)
@@ -53,7 +53,7 @@ function ecg=ECG(audio)
     plot(ty,y)
 
 
-%% ---------------Trouver les pics------------------%%
+%% ---------------Trouver les pics------------------
     disp("Pour l'audio : "+audio);
     findpeaks(y,"MinPeakDistance",200,"MinPeakHeight",0.8);
     % On récupère les valeurs des pics, leur amplitude et indice
@@ -63,7 +63,7 @@ function ecg=ECG(audio)
     % On trouve le temps associé à chaque pic
     temporel=ty(indice);
 
-%% ---------Calculer la fréquence cardiaque---------------%%
+%% ---------Calculer la fréquence cardiaque---------------
     % On calcule la fréquence cardiaque moyenne 
     bpm=round((nbPeaks-1)*60/(temporel(nbPeaks)-temporel(1)));
     disp ("Moyenne = "+bpm+" battements par minute");

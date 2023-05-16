@@ -14,7 +14,7 @@ ECG("109.wav")
 
 function ecg=ECG(audio)
 
-%% -----------Récupération du Signal-------------%%
+%% -----------Récupération du Signal-------------
     [x,Fe]=audioread(audio);
     Te=1/Fe;
     [n,Pistes]=size(x);
@@ -22,7 +22,7 @@ function ecg=ECG(audio)
     figure()
     plot(t,x)
     
-%% ----------Stéréo en mono----------------------%%
+%% ----------Stéréo en mono----------------------
 
 % Si l'audio est en stéréo, alors on fait une moyenne des deux pistes pour 
 % n'en obtenir plus qu'une :
@@ -30,7 +30,7 @@ function ecg=ECG(audio)
         x=mean(x,2);
     end
 
-%% ----------Puissance Instantanée---------------%%
+%% ----------Puissance Instantanée---------------    
     disp("Pour l_audio : "+audio);
     y=[];
     ty=[];
@@ -59,7 +59,7 @@ function ecg=ECG(audio)
     y = [y, zeros(1,a-n)];
     
 
-%% ---------------Lissage-----------------------%%
+%% ---------------Lissage-----------------------
 
     % Technique de moyenne mobile : chaque point est la moyenne des 120
     % valeurs suivantes (déterminé expérimentalement)
@@ -70,14 +70,14 @@ function ecg=ECG(audio)
     y = y_new;
 
 
-%% ------------Transformé de Fourier--------------%%
+%% ------------Transformé de Fourier--------------
     fft_signal = fft(y);
     % On trace le signal en enlevant la partie symétrique de la TF :
     spectre = abs(fft_signal(1:a/2));                         
     frequences = Fe/((a-1)).*[0:a/2-1];
 
 
-%% --------------------Tracés---------------------%%
+%% --------------------Tracés---------------------
     figure()
     subplot(2,1,1);
     % On trace le signal lissé
